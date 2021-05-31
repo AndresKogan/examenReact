@@ -18,7 +18,7 @@ export const AppRouter = () => {
          
            <Switch>
            <Route exact path="/" component={HomeScreen}/>
-               <Route exact path="/movies" component={MoviesScreen}/>
+               <Route exact path="/moviesScreen" component={MoviesScreen}/>
            </Switch>
              </div>
        </Router>

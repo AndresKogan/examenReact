@@ -9,7 +9,7 @@ const HomeScreen = () => {
         <div className="col-4">
           <legend class="fw-bold">Digital Movies</legend>
       <p>Bienvenidos a Digital Movies</p>
-      <a href="/movies" class="stretched-link">Listado de Películas</a>
+      <a href="/moviesScreen" class="stretched-link">Listado de Películas</a>
 
 
         </div>
