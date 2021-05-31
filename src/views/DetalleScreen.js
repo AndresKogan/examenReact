@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import { getMovies } from '../helpers/getMovies';
 
 const DetalleScreen = () => {
 
     const { id } = useParams();
     const [detalle, setdetalle] = useState(null)
+    let history = useHistory()
 
     useEffect(() => {
         getMovies(`movies/detail/${id}`)
@@ -13,14 +14,23 @@ const DetalleScreen = () => {
     }, [])
 
 
+    const volver = () => { history.push("/moviesScreen"); }
+
     if (detalle === null) {
         return (<div></div>)
     }
 
     return (
         <div>
-            {JSON.stringify(detalle)}
-            {`Detalle Pelicula: ${id}`}
+
+            <p>Id: {detalle.id}</p>
+            <p>Titulo: {detalle.title}</p>
+            <p>Rating: {detalle.rating}</p>
+            <p>Awards: {detalle.awards}</p>
+            <p>Fecha de estreno: {detalle.release_date}</p>
+            <p>Duracion: {detalle.length}</p>
+            <p>Genero: {detalle.genre_id}</p>
+            <button onClick={volver}>Volver</button>
         </div>
     )
 }
