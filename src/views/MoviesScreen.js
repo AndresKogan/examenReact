@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { getMovies } from '../helpers/getMovies'
 
-export const MoviesScreen = ({history}) => {
+const MoviesScreen = ({ history }) => {
 
     const [movies, setMovies] = useState(null)
 
-    useEffect(() => {
+     useEffect(() => {
         getMovies("movies")
             .then(peliculas => {
                 setMovies(peliculas)
             })
     }, []);
 
-    const handleClick = ({target}) => {
-
-    history.push(target.id)
-
+    const handleClick = ({ target }) => {
+        history.push(target.id)
     }
 
 
@@ -27,31 +25,26 @@ export const MoviesScreen = ({history}) => {
 
 
     return (
-<>
-
-
-
-      
+        <>
             <legend className="fw-bold">Listado de Peliculas</legend>
-<button className="btn btn-primary" id="Agregar" onClick={handleClick} >Agregar una Peliculas</button>&nbsp;
-<button className="btn btn-success" id="/" onClick={handleClick}>Inicio</button>
+            <button className="btn btn-primary" id="Agregar" onClick={handleClick} >Agregar una Peliculas</button>&nbsp;
+            <button className="btn btn-success" id="/" onClick={handleClick}>Inicio</button>
 
-          <ul>    {movies.map(movie =>
+            <ul>    {movies.map(movie =>
 
                 <li key={movie.id}>
                     <a
-
                         href={`/movies/detail/${movie.id}`}>
                         {movie.title}
 
                     </a>
                 </li>)}
 
-            <button ></button>
-        </ul>
+                <button ></button>
+            </ul>
         </>
     )
 
 }
-
+export default MoviesScreen;
 

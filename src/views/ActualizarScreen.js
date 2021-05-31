@@ -1,9 +1,10 @@
 import React from 'react'
 
-export const ActualizarScreen = () => {
+const ActualizarScreen = () => {
     return (
         <div>
             Actualiza HomeScreen
         </div>
     )
 }
+export default ActualizarScreen;

@@ -3,29 +3,29 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-  } from "react-router-dom";
-import { AgregarScreen } from '../views/AgregarScreen';
+} from "react-router-dom";
+import AgregarScreen from '../views/AgregarScreen';
+import DetalleScreen from '../views/DetalleScreen';
 import HomeScreen from '../views/HomeScreen';
-import { MoviesScreen } from '../views/MoviesScreen';
+import MoviesScreen from '../views/MoviesScreen';
 
 export const AppRouter = () => {
 
     return (
 
         <div className="container mt-2">
-       <Router>
-           <div>
+            <Router>
+                <div>
+                    <Switch>
+                        <Route exact path="/" component={HomeScreen} />
+                        <Route exact path="/moviesScreen" component={MoviesScreen} />
+                        <Route exact path="/agregar" component={AgregarScreen} />
+                        <Route path="/movies/detail/:id" component={DetalleScreen} />
+                    </Switch>
+                </div>
+            </Router>
+        </div>
 
-         
-           <Switch>
-           <Route exact path="/" component={HomeScreen}/>
-               <Route exact path="/moviesScreen" component={MoviesScreen}/>
-               <Route exact path="/agregar" component={AgregarScreen}/>
-           </Switch>
-             </div>
-       </Router>
-       </div>
-            
-        
+
     )
 }
