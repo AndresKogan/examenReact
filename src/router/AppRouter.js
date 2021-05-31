@@ -4,6 +4,7 @@ import {
     Switch,
     Route,
   } from "react-router-dom";
+import { AgregarScreen } from '../views/AgregarScreen';
 import HomeScreen from '../views/HomeScreen';
 import { MoviesScreen } from '../views/MoviesScreen';
 
@@ -19,6 +20,7 @@ export const AppRouter = () => {
            <Switch>
            <Route exact path="/" component={HomeScreen}/>
                <Route exact path="/moviesScreen" component={MoviesScreen}/>
+               <Route exact path="/agregar" component={AgregarScreen}/>
            </Switch>
              </div>
        </Router>
