@@ -15,6 +15,7 @@ const DetalleScreen = () => {
 
 
     const volver = () => { history.push("/moviesScreen"); }
+    const borrar = () => { history.push(`/movies/delete/${id}`) }
 
     if (detalle === null) {
         return (<div></div>)
@@ -22,7 +23,6 @@ const DetalleScreen = () => {
 
     return (
         <div>
-
             <p>Id: {detalle.id}</p>
             <p>Titulo: {detalle.title}</p>
             <p>Rating: {detalle.rating}</p>
@@ -31,6 +31,7 @@ const DetalleScreen = () => {
             <p>Duracion: {detalle.length}</p>
             <p>Genero: {detalle.genre_id}</p>
             <button onClick={volver}>Volver</button>
+            <button onClick={borrar}>Borrar</button>
         </div>
     )
 }
