@@ -5,6 +5,7 @@ import {
     Route,
 } from "react-router-dom";
 import AgregarScreen from '../views/AgregarScreen';
+import BorrarScreen from '../views/BorrarScreen';
 import DetalleScreen from '../views/DetalleScreen';
 import HomeScreen from '../views/HomeScreen';
 import MoviesScreen from '../views/MoviesScreen';
@@ -21,6 +22,7 @@ export const AppRouter = () => {
                         <Route exact path="/moviesScreen" component={MoviesScreen} />
                         <Route exact path="/agregar" component={AgregarScreen} />
                         <Route path="/movies/detail/:id" component={DetalleScreen} />
+                        <Route path="/movies/delete/:id" component={BorrarScreen} />
                     </Switch>
                 </div>
             </Router>
