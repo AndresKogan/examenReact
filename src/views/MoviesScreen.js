@@ -1,49 +1,22 @@
 import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router';
+
 import { getMovies } from '../helpers/getMovies'
+import NavBarListas from '../ui/NavBarListas';
+import { Listas } from './Listas';
 
-const MoviesScreen = ({ history }) => {
+const MoviesScreen = () => {
 
-    const [movies, setMovies] = useState(null)
-
-     useEffect(() => {
-         console.log("aver")
-        getMovies("movies")
-            .then(peliculas => {
-                setMovies(peliculas)
-            })
-    }, []);
-
-    const handleClick = ({ target }) => {
-        history.push(target.id)
-    }
-
-
-    if (movies === null) {
-        return <>
-            <h1>Loading...</h1>
-        </>
-    }
-
+    const { lista } = useParams();
+console.log("cargo")
 
     return (
-        <>
-            <legend className="fw-bold">Listado de Peliculas</legend>
-            <button className="btn btn-primary" id="Agregar" onClick={handleClick} >Agregar una Peliculas</button>&nbsp;
-            <button className="btn btn-success" id="/" onClick={handleClick}>Inicio</button>
 
-            <ul >    {movies.map(movie =>
+        <div>
+            <NavBarListas />
+            <Listas lista={lista} />
+            </div>
 
-                <li key={movie.id} style={{fontSize: '12px'}}>
-                    <a
-                        href={`/movies/detail/${movie.id}`}>
-                        {movie.title}
-
-                    </a>
-                </li>)}
-
-             
-            </ul>
-        </>
     )
 
 }
