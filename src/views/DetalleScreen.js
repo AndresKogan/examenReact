@@ -2,10 +2,15 @@ import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router';
 import { getMovies } from '../helpers/getMovies';
 
+import Button from 'react-bootstrap/Button';
+import BorrarScreen from './BorrarScreen';
+
 const DetalleScreen = () => {
 
     const { id } = useParams();
     const [detalle, setdetalle] = useState(null)
+    const [mostrarBorrar, setmostrarBorrar] = useState(false)
+
     let history = useHistory()
 
     useEffect(() => {
@@ -14,8 +19,8 @@ const DetalleScreen = () => {
     }, [])
 
 
-    const volver = () => { history.push("/moviesScreen/todas"); }
-    const borrar = () => { history.push(`/movies/delete/${id}`) }
+    const volver = () => {history.push("/moviesScreen/todas")}
+    const borrar = () => {setmostrarBorrar(true)}
 
     if (detalle === null) {
         return (<div></div>)
@@ -32,6 +37,8 @@ const DetalleScreen = () => {
             <p>Genero: {detalle.genre_id}</p>
             <button onClick={volver}>Volver</button>
             <button onClick={borrar}>Borrar</button>
+
+            <BorrarScreen mostrar={mostrarBorrar} externalmostrarsetter={setmostrarBorrar}></BorrarScreen>   
         </div>
     )
 }

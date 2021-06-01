@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router';
 import { getMovies } from '../helpers/getMovies';
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button';
 
-const BorrarScreen = () => {
+const BorrarScreen = ({ externalmostrarsetter, mostrar }) => {
 
     const { id } = useParams()
     const [detalle, setdetalle] = useState(null)
-
+    const handleClose = () => externalmostrarsetter(false);
     let history = useHistory()
 
     useEffect(() => {
-        getMovies(`movies/detail/${id}`)
+        getMovies(`detail/${id}`)
             .then(res => setdetalle(res[0]))
     }, [])
-
 
     const borrar = async () => {
         const response = await fetch(`http://localhost:3001/movies/update/${id}`, {
@@ -30,6 +31,8 @@ const BorrarScreen = () => {
 
         if (!response.ok) {
             console.log('Error al modificar la pelicula')
+        }else{
+            history.push("/moviesScreen/todas");
         }
     }
 
@@ -38,11 +41,23 @@ const BorrarScreen = () => {
     }
 
     return (
-        <div>
+        <>
+            <Modal show={mostrar} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Borrado Logico</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Estas seguro de querer borrar esta película: {`${detalle.title} ???`}</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={handleClose}>
+                        Close
+                </Button>
+                    <Button variant="primary" onClick={borrar}>
+                        Borrar
+                </Button>
+                </Modal.Footer>
+            </Modal>
+        </>
+    );
 
-            Estas seguro de querer borrar esta película: {`${detalle.title} ???`}
-            <button onClick={borrar}>Borrar</button>
-        </div>
-    )
 }
 export default BorrarScreen;
