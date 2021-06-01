@@ -6,6 +6,7 @@ const MoviesScreen = ({ history }) => {
     const [movies, setMovies] = useState(null)
 
      useEffect(() => {
+         console.log("aver")
         getMovies("movies")
             .then(peliculas => {
                 setMovies(peliculas)
@@ -30,9 +31,9 @@ const MoviesScreen = ({ history }) => {
             <button className="btn btn-primary" id="Agregar" onClick={handleClick} >Agregar una Peliculas</button>&nbsp;
             <button className="btn btn-success" id="/" onClick={handleClick}>Inicio</button>
 
-            <ul>    {movies.map(movie =>
+            <ul >    {movies.map(movie =>
 
-                <li key={movie.id}>
+                <li key={movie.id} style={{fontSize: '12px'}}>
                     <a
                         href={`/movies/detail/${movie.id}`}>
                         {movie.title}
@@ -40,7 +41,7 @@ const MoviesScreen = ({ history }) => {
                     </a>
                 </li>)}
 
-                <button ></button>
+             
             </ul>
         </>
     )
