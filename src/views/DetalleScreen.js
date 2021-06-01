@@ -9,12 +9,12 @@ const DetalleScreen = () => {
     let history = useHistory()
 
     useEffect(() => {
-        getMovies(`movies/detail/${id}`)
+        getMovies(`detail/${id}`)
             .then(res => setdetalle(res[0]))
     }, [])
 
 
-    const volver = () => { history.push("/moviesScreen"); }
+    const volver = () => { history.push("/moviesScreen/todas"); }
     const borrar = () => { history.push(`/movies/delete/${id}`) }
 
     if (detalle === null) {

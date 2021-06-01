@@ -24,10 +24,11 @@ export const AppRouter = () => {
             <NavBarGeneral />
             <div className="container mt-2">
 
-                <Router>
+                {/* <Router> */}
                     <div>
                         <Switch>
 
+                            <Route exact path="/moviesScreen/" component={MoviesScreen} />
                             <Route exact path="/moviesScreen/:lista" component={MoviesScreen} />
                             <Route exact path="/" component={HomeScreen} />
                             <Route exact path="/agregar" component={AgregarScreen} />
@@ -39,7 +40,7 @@ export const AppRouter = () => {
 
                         </Switch>
                     </div>
-                </Router>
+                {/* </Router> */}
             </div>
 
         </>
