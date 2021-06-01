@@ -69,7 +69,7 @@ const DetalleScreen = () => {
             <Button className="float-left ml-1" variant="secondary" onClick={borrar}>
                 Borrar
             </Button>
-            <BorrarScreen mostrar={mostrarBorrar} externalmostrarsetter={setmostrarBorrar}></BorrarScreen>
+            <BorrarScreen mostrar={mostrarBorrar} externalmostrarsetter={setmostrarBorrar} detalle={detalle}></BorrarScreen>
         </div>
     )
 }
