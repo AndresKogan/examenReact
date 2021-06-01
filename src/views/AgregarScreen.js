@@ -26,13 +26,13 @@ const AgregarScreen = ({ history }) => {
 
 
     const cargaGenero = async () => {
-        console.log("aca")
+     
         const url = `http://localhost:3001/movies/add`;
 
         const resp = await fetch(url);
-console.log(resp)
+
         const data = await resp.json()
-console.log(data)
+
         return data;
     }
 

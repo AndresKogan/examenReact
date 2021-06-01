@@ -26,7 +26,7 @@ const NavBarGeneral = () => {
                         activeClassName="active"
                         className="nav-item nav-link"
                         exact
-                        to="/moviesScreen/todas"
+                        to="/moviesScreen/Todas"
                     >
                         Listado Peliculas
                     </NavLink>

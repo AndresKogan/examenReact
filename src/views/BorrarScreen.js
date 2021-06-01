@@ -12,7 +12,7 @@ const BorrarScreen = ({ externalmostrarsetter, mostrar }) => {
     let history = useHistory()
 
     useEffect(() => {
-        getMovies(`detail/${id}`)
+        getMovies(`movies/detail/${id}`)
             .then(res => setdetalle(res[0]))
     }, [])
 

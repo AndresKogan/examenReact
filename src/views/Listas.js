@@ -1,28 +1,50 @@
-import React, { useEffect, useMemo, useState } from 'react'
-import { useParams } from 'react-router'
+import React, { useMemo, useState } from 'react'
+import { useHistory, useParams } from 'react-router'
 import { getMovies } from '../helpers/getMovies';
 
-export const Listas = ({ history }) => {
+export const Listas = () => {
 
 
-
+    const history = useHistory()
     const { lista } = useParams();
 
     const [movies, setMovies] = useState(null)
 
     useMemo(() => {
-        if (lista === "todas") {
-            getMovies("")
-                .then(peliculas => {
-                    setMovies(peliculas)
-                })
+        switch (lista) {
+            case "Todas":
+                getMovies("movies")
+                    .then(peliculas => {
+
+                        setMovies(peliculas)
+                    })
+                break;
+            case "Genero":
+                getMovies("genres/2")
+                    .then(peliculas => {
+
+                        setMovies(peliculas)
+                    })
+                break;
+            case "Nuevas":
+                getMovies("movies/new")
+                    .then(peliculas => {
+
+                        setMovies(peliculas)
+                    })
+                break;
+            case "Recomendadas":
+                getMovies("movies/recommended")
+                    .then(peliculas => {
+
+                        setMovies(peliculas)
+                    })
+                break;
+            default:
+
+                break;
         }
-        else {
-            getMovies(lista)
-                .then(peliculas => {
-                    setMovies(peliculas)
-                })
-        }
+
     }, [lista])
 
 
@@ -37,12 +59,17 @@ export const Listas = ({ history }) => {
         </>
     }
 
+
     return (
         <div>
             <div className="row">
                 <div className="col">
 
                     <legend className="fw-bold">Listado de {lista}</legend>
+
+
+
+
                     <ul >    {movies.map(movie =>
 
                         <li key={movie.id} style={{ fontSize: '12px' }}>
@@ -63,7 +90,7 @@ export const Listas = ({ history }) => {
                     <br />
                     <div className="container">
 
-                        <button className="btn btn-primary" id="Agregar" onClick={handleClick} >Agregar una Peliculas</button>
+                        <button className="btn btn-primary" id="/Agregar" onClick={handleClick} >Agregar una Peliculas</button>
                         <br />
                         <br />
                         <button className="btn btn-success" id="/" onClick={handleClick}>Inicio</button>

@@ -2,11 +2,11 @@
 export const getMovies = async (action) => {
 
 
-    const url = `http://localhost:3001/movies/${action}`;
-    console.log(url)
+    const url = `http://localhost:3001/${action}`;
+
     const resp = await fetch(url);
     const data = await resp.json()
-console.log(data);
+
     const movies = data.map(movie => {
 
         return {
