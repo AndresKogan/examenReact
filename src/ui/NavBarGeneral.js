@@ -6,8 +6,6 @@ import { Link, NavLink } from 'react-router-dom';
 
 const NavBarGeneral = () => {
 
-
-
     return (
         
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark">

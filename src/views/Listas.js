@@ -5,7 +5,7 @@ import { getMovies } from '../helpers/getMovies';
 export const Listas = () => {
 
 
-    const history = useHistory()
+ const history = useHistory()
     const { lista } = useParams();
 
     const [movies, setMovies] = useState(null)
@@ -14,37 +14,37 @@ export const Listas = () => {
         switch (lista) {
             case "Todas":
                 getMovies("movies")
-                    .then(peliculas => {
-
-                        setMovies(peliculas)
-                    })
+                .then(peliculas => {
+               
+                    setMovies(peliculas)
+                })
                 break;
-            case "Genero":
+                case "Genero":
                 getMovies("genres/2")
-                    .then(peliculas => {
-
-                        setMovies(peliculas)
-                    })
+                .then(peliculas => {
+           
+                    setMovies(peliculas)
+                })
                 break;
-            case "Nuevas":
+                case "Nuevas":
                 getMovies("movies/new")
-                    .then(peliculas => {
-
-                        setMovies(peliculas)
-                    })
+                .then(peliculas => {
+                 
+                    setMovies(peliculas)
+                })
                 break;
-            case "Recomendadas":
+                case "Recomendadas":
                 getMovies("movies/recommended")
-                    .then(peliculas => {
-
-                        setMovies(peliculas)
-                    })
+                .then(peliculas => {
+        
+                    setMovies(peliculas)
+                })
                 break;
             default:
-
+                
                 break;
         }
-
+        
     }, [lista])
 
 
@@ -58,7 +58,7 @@ export const Listas = () => {
             <h1>Loading...</h1>
         </>
     }
-
+    
 
     return (
         <div>

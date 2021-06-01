@@ -2,36 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom';
 import { NavDropdown } from 'react-bootstrap';
 
-const NavBarListas = () => {
-    const validGrupos = ['Nuevas', 'Recomendadas', 'Todas'];
-
-    const [generos, setGeneros] = useState([])
-
-
-    useEffect(() => {
-        cargaGenero()
-            .then(
-                (elementos) => setGeneros(elementos))
-    }, []);
-
-
-    const cargaGenero = async () => {
-
-        const url = `http://localhost:3001/genres`;
-        const resp = await fetch(url);
-        const data = await resp.json()
-
-        return data;
-    }
-
-    if (generos === []) {
-        return <h1>
-            loading....
-        </h1>
-    }
-
+const NavBarListas = ({generos}) => {
+    const validGrupos = ['Todas','Nuevas', 'Recomendadas' ];
+console.log("aca")
     console.log(generos)
-
 
 
 
@@ -54,10 +28,16 @@ const NavBarListas = () => {
                                 {grupo}
                             </NavLink>))
                     }
+              
 
                     <NavDropdown title="Por Generos" id="basic-nav-dropdown">
                         {generos.map(genero => {
-                            <NavDropdown.Item href={`/moviesScreen/genres/detail/${genero.id}`}>{genero.name}</NavDropdown.Item>
+                            {console.log(genero.name)}
+                            <NavDropdown.Item 
+                            key={genero.id}
+                            href={`/moviesScreen/genres/detail/${genero.id}`}>1111
+                                {genero.name}
+                                </NavDropdown.Item>
                         })}
 
                         <NavDropdown.Divider />
