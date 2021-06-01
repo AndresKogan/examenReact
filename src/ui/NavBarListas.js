@@ -31,14 +31,14 @@ console.log("aca")
               
 
                     <NavDropdown title="Por Generos" id="basic-nav-dropdown">
-                        {generos.map(genero => {
-                            {console.log(genero.name)}
+                        {generos.map(genero => (
+                         
                             <NavDropdown.Item 
                             key={genero.id}
-                            href={`/moviesScreen/genres/detail/${genero.id}`}>1111
+                            href={`/moviesScreen/genres/detail/${genero.id}`}>
                                 {genero.name}
                                 </NavDropdown.Item>
-                        })}
+                        ))}
 
                         <NavDropdown.Divider />
                         <NavDropdown.Item href="">Todos Los generos</NavDropdown.Item>

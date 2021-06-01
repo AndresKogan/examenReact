@@ -7,7 +7,7 @@ const MoviesScreen = () => {
 
     const { lista } = useParams();
 
-    const [generos, setGeneros] = useState([])
+    const [generos, setGeneros] = useState(null)
 
 
     useEffect(() => {
@@ -26,8 +26,11 @@ const MoviesScreen = () => {
         return data;
     }
 
-   
+    if(generos===null){
+        return (<h1>Loading...</h1>)
+    }
 
+else {
      return (
 
         <div>
@@ -36,7 +39,7 @@ const MoviesScreen = () => {
         </div>
 
     )
-
+}
    
 
 }
