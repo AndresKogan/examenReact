@@ -31,7 +31,7 @@ const BorrarScreen = ({ externalmostrarsetter, mostrar }) => {
 
         if (!response.ok) {
             console.log('Error al modificar la pelicula')
-        }else{
+        } else {
             history.push("/moviesScreen/todas");
         }
     }
@@ -46,12 +46,12 @@ const BorrarScreen = ({ externalmostrarsetter, mostrar }) => {
                 <Modal.Header closeButton>
                     <Modal.Title>Borrado Logico</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Estas seguro de querer borrar esta película: {`${detalle.title} ???`}</Modal.Body>
+                <Modal.Body>Estas seguro de querer borrar esta película? <br/> <b>{`${detalle.title}`}</b></Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                 </Button>
-                    <Button variant="primary" onClick={borrar}>
+                    <Button variant="danger" onClick={borrar}>
                         Borrar
                 </Button>
                 </Modal.Footer>
