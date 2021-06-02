@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Spinner } from 'react-bootstrap';
+import React, {  useState } from 'react'
+
 import { useHistory, useParams } from 'react-router';
 import postMovies from '../helpers/postMovies';
 import Formulario from './Formulario';

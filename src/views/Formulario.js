@@ -26,7 +26,7 @@ const Formulario = ({ valorInicial, setFormulario }) => {
         awards,
         release_date,
         length,
-        genre_id } = formValues!=undefined?formValues: { title: '', rating: '', awards: '', release_date: '', length: '', genre_id: '' };
+        genre_id } = formValues!==undefined?formValues: { title: '', rating: '', awards: '', release_date: '', length: '', genre_id: '' };
 
     if (generos === null) {
         return (<Spinner animation="grow" />)

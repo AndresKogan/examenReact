@@ -8,7 +8,7 @@ const NavBarGeneral = () => {
         <Navbar variant="dark" bg="dark" sticky="top">
             <Navbar.Brand href="/"><h1>Digital Movies</h1></Navbar.Brand>
             <Nav >
-                <NavLink href="/moviesScreen/Todas"><h4> Peliculas </h4></NavLink>
+                <NavLink href="/moviesScreen"><h4> Peliculas </h4></NavLink>
                 <NavLink href="/Agregar"><h4> Agregar </h4></NavLink>
                 <NavLink href="/search"><h4> Search </h4></NavLink>
             </Nav>
