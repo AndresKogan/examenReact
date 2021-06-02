@@ -6,6 +6,8 @@ export const getMovies = async (action) => {
 
     const resp = await fetch(url);
     const data = await resp.json()
+    console.log(url)
+    console.log(data)
 
     const movies = data.map(movie => {
 

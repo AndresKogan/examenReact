@@ -7,6 +7,7 @@ export const Listas = () => {
 
  const history = useHistory()
     const { lista } = useParams();
+    
 
     const [movies, setMovies] = useState(null)
 
@@ -20,7 +21,8 @@ export const Listas = () => {
                 })
                 break;
                 case "Genero":
-                getMovies("genres/2")
+                  
+                getMovies("genres/detail/")
                 .then(peliculas => {
            
                     setMovies(peliculas)
@@ -41,7 +43,11 @@ export const Listas = () => {
                 })
                 break;
             default:
-                
+                getMovies(`genres/detail/${lista}`)
+                .then(peliculas => {
+           
+                    setMovies(peliculas)
+                })
                 break;
         }
         

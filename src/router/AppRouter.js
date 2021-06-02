@@ -29,6 +29,7 @@ export const AppRouter = () => {
 
                         <Route exact path="/moviesScreen/" component={MoviesScreen} />
                         <Route exact path="/moviesScreen/:lista" component={MoviesScreen} />
+                        <Route exact path="/moviesScreen/Genero/:id" component={MoviesScreen} />
                         <Route exact path="/" component={HomeScreen} />
                         <Route exact path="/agregar" component={AgregarScreen} />
                         <Route exact path="/movies/detail/:id" component={DetalleScreen} />

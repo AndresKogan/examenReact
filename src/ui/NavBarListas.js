@@ -2,10 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom';
 import { NavDropdown } from 'react-bootstrap';
 
-const NavBarListas = ({generos}) => {
-    const validGrupos = ['Todas','Nuevas', 'Recomendadas' ];
-console.log("aca")
-    console.log(generos)
+const NavBarListas = ({ generos }) => {
+
+ 
 
 
 
@@ -16,28 +15,45 @@ console.log("aca")
 
             <div className="navbar-collapse">
                 <div className="navbar-nav">
-                    {
-                        validGrupos.map(grupo => (
-                            <NavLink
-                                key={grupo}
-                                activeClassName="active"
-                                className="nav-item nav-link"
-                                exact
-                                to={`${grupo}`}
-                            >
-                                {grupo}
-                            </NavLink>))
-                    }
-              
+
+                    <NavLink
+
+                        activeClassName="active"
+                        className="nav-item nav-link"
+                        exact
+                        to="Todas"
+                    >
+                        Todas
+                            </NavLink>
+                    <NavLink
+                    
+                        activeClassName="active"
+                        className="nav-item nav-link"
+                        exact
+                        to="Nuevas"
+                    >
+                        Nuevas
+                            </NavLink>
+                    <NavLink
+                       
+                        activeClassName="active"
+                        className="nav-item nav-link"
+                        exact
+                        to="Recomendadas"
+                    >
+                        Recomendadas
+                            </NavLink>
+
+
 
                     <NavDropdown title="Por Generos" id="basic-nav-dropdown">
                         {generos.map(genero => (
-                         
-                            <NavDropdown.Item 
-                            key={genero.id}
-                            href={`/moviesScreen/genres/detail/${genero.id}`}>
+
+                            <NavDropdown.Item
+                                key={genero.id}
+                                href={`${genero.id}`}>
                                 {genero.name}
-                                </NavDropdown.Item>
+                            </NavDropdown.Item>
                         ))}
 
                         <NavDropdown.Divider />
