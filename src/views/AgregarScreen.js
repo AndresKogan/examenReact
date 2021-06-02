@@ -19,7 +19,7 @@ const AgregarScreen = () => {
     }
 
     const handleSubmit = async () => {
-        console.log(formulario)
+      
         postMovies(`create/`, JSON.stringify(formulario))
         history.push("/moviesScreen/")
     }

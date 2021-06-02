@@ -55,7 +55,7 @@ const MoviesScreen = () => {
                     <Dropdown.Item key="0"
                         name="Todos los generos"
                         onClick={(e) => setfiltro({...filtro, porGenero: e.currentTarget.name })}>
-                        Generos
+                        Todos Los Generos
                     </Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>

@@ -15,7 +15,7 @@ export const SearchScreen = ({ history }) => {
 
         
         useMemo(() =>  getMovies("movies")
-        .then(peliculas => { setMovies(peliculas) }), [q]);
+        .then(peliculas => { setMovies(peliculas) }), []);
 
 
     const moviesFiltradas  = ( titulo  , peliculas) => {

@@ -31,10 +31,10 @@ const Listas = ({ filtro, generos }) => {
         return (<Spinner animation="grow" />)
     }
     
-    console.log(movies)
+
     // const filtro_genero_id = generos.filter(genero => genero.name === filtro.porGenero)[0].id
     const filtro_genero = generos.find(genero=>genero.name === filtro.porGenero) 
-    console.log(filtro_genero)
+ 
     const movies_filtradas = filtro_genero != null ? movies.filter(movie => movie.genre_id === filtro_genero.id) : movies
 
     return (
