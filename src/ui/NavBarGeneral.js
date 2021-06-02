@@ -10,7 +10,7 @@ const NavBarGeneral = () => {
             <Nav >
                 <NavLink href="/moviesScreen"><h4> Peliculas </h4></NavLink>
                 <NavLink href="/Agregar"><h4> Agregar </h4></NavLink>
-                <NavLink href="/search"><h4> Search </h4></NavLink>
+                <NavLink href="/search"><h4> Buscar Pelicula </h4></NavLink>
             </Nav>
         </Navbar>
     )
