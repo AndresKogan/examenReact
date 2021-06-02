@@ -20,8 +20,9 @@ const DetalleScreen = () => {
     }, [])
 
 
-    const volver = () => { history.push("/moviesScreen/todas") }
+    const volver = () => { history.push("/moviesScreen/Todas") }
     const borrar = () => { setmostrarBorrar(true) }
+    const editar = () => { history.push(`/movies/edit/${id}`) }
 
     if (detalle === null) {
         return (<div></div>)
@@ -30,7 +31,7 @@ const DetalleScreen = () => {
     return (
         <div>
 
-            <Table  responsive  striped bordered hover size="sm" >
+            <Table responsive striped bordered hover size="sm" >
                 <tbody>
                     <tr>
                         <td>Id</td>
@@ -63,11 +64,14 @@ const DetalleScreen = () => {
                 </tbody>
             </Table>
 
-            <Button className="float-left ml-1" variant="primary" onClick={volver}>
+            <Button className="float-left ml-1" variant="secondary" onClick={volver}>
                 Volver
             </Button>
-            <Button className="float-left ml-1" variant="secondary" onClick={borrar}>
+            <Button className="float-left ml-1" variant="danger" onClick={borrar}>
                 Borrar
+            </Button>
+            <Button className="float-left ml-1" variant="primary" onClick={editar}>
+                Editar
             </Button>
             <BorrarScreen mostrar={mostrarBorrar} externalmostrarsetter={setmostrarBorrar} detalle={detalle}></BorrarScreen>
         </div>

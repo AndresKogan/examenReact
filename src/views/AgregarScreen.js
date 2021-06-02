@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { useForm } from '../customHooks/useForm';
+import useForm from '../customHooks/useForm';
 
 const AgregarScreen = ({ history }) => {
 
     const [generos, setGeneros] = useState([])
-
-
 
     useEffect(() => {
         cargaGenero()
@@ -13,7 +11,7 @@ const AgregarScreen = ({ history }) => {
     }, []);
 
     const [formValues, handleInputChange, reset] = useForm({
-
+        
     });
 
     const {

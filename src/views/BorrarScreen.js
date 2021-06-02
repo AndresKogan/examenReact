@@ -26,7 +26,7 @@ const BorrarScreen = ({ externalmostrarsetter, mostrar, detalle }) => {
         if (!response.ok) {
             console.log('Error al modificar la pelicula')
         } else {
-            history.push("/moviesScreen/todas");
+            history.push("/moviesScreen/Todas");
         }
     }
 

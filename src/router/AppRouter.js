@@ -8,6 +8,7 @@ import NavBarGeneral from '../ui/NavBarGeneral';
 import AgregarScreen from '../views/AgregarScreen';
 import BorrarScreen from '../views/BorrarScreen';
 import DetalleScreen from '../views/DetalleScreen';
+import EditarScreen from '../views/EditarScreen';
 import HomeScreen from '../views/HomeScreen';
 
 import MoviesScreen from '../views/MoviesScreen';
@@ -34,6 +35,7 @@ export const AppRouter = () => {
                         <Route exact path="/agregar" component={AgregarScreen} />
                         <Route exact path="/movies/detail/:id" component={DetalleScreen} />
                         <Route exact path="/movies/delete/:id" component={BorrarScreen} />
+                        <Route exact path="/movies/edit/:id" component={EditarScreen} />
 
 
 
