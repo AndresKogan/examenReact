@@ -1,127 +1,40 @@
 import React, { useEffect, useState } from 'react'
-import useForm from '../customHooks/useForm';
+import { Spinner } from 'react-bootstrap';
+import { useHistory, useParams } from 'react-router';
+import postMovies from '../helpers/postMovies';
+import Formulario from './Formulario';
 
-const AgregarScreen = ({ history }) => {
+const AgregarScreen = () => {
 
-    const [generos, setGeneros] = useState([])
+    //--------------Hooks----------------------
 
-    useEffect(() => {
-        cargaGenero()
-            .then((elementos) => setGeneros(elementos))
-    }, []);
+    const [formulario, setFormulario] = useState(null)
+    const { id } = useParams();
+    let history = useHistory()
 
-    const [formValues, handleInputChange, reset] = useForm({
-        
-    });
+    //--------------Logica----------------------
 
-    const {
-        title,
-        rating,
-        awards,
-        release_date,
-        length,
-        genre_id } = formValues;
-
-
-    const cargaGenero = async () => {
-     
-        const url = `http://localhost:3001/movies/add`;
-
-        const resp = await fetch(url);
-
-        const data = await resp.json()
-
-        return data;
+    const handleClick = () => {
+        history.push(`/movies/detail/${id}`)
     }
 
-    const handleClick = async (e) => {
- 
-       
-         history.push("/")
+    const handleSubmit = async () => {
+        console.log(formulario)
+        postMovies(`create/`, JSON.stringify(formulario))
+        history.push("/moviesScreen/")
     }
 
-
-
-    if (generos === null) {
-        return (
-            <h1>Loading....</h1>
-        )
-    }
-
+    //--------------Returns----------------------
 
     return (
         <div>
-
             <legend className="fw-bold">Agregar Pelicula</legend>
-            <form action="http://localhost:3001/movies/create" method="Post">
-                <label>Title</label>
-                <input
-                    className="form-control form-control-sm"
-                    type="text"
-                    name="title"
-                    autoComplete="off"
-                    value={title}
-                    onChange={handleInputChange}
-                />
-                <label>Rating</label>
-                <input
-                    className="form-control form-control-sm"
-                    type="number"
-                    name="rating"
-                    autoComplete="off"
-                    value={rating}
-                    onChange={handleInputChange}
-                />
-                <label>Awards</label>
-                <input
-                    className="form-control form-control-sm"
-                    type="number"
-                    name="awards"
-                    autoComplete="off"
-                    value={awards}
-                    onChange={handleInputChange}
-                />
-                <label>Release Date</label>
-                <input
-                    className="form-control form-control-sm"
-                    type="date"
-                    name="release_date"
-                    autoComplete="off"
-                    value={release_date}
-                    onChange={handleInputChange} />
-                <label>Length</label>
-                <input
-                    className="form-control form-control-sm"
-                    type="number"
-                    name="length"
-                    autoComplete="off"
-                    value={length}
-                    onChange={handleInputChange}
-                />
+            <form>
 
-                <label>Genre</label><br />
-                <select
-                    className="custom-select"
-                    name="genre_id"
-                    autoComplete="off"
-                    value={genre_id}
-                    onChange={handleInputChange}
-                >
-                    <option defaultValue>-select genre-</option>
-                    {
-                        generos.map((genero, i) =>
-                            <option
-                                key={i}
-                                value={genero.id}
-                            >
-                                {genero.name}
-                            </option>
-                        )}
-                </select>
-                <br />
-                <br />
-                <button className="btn btn-primary" id="agregar" type="submit" >Agregar una Pelicula</button>&nbsp;
-            <button className="btn btn-success" id="/" onClick={handleClick}>Inicio</button>
+                <Formulario formulario={formulario} setFormulario={setFormulario} />
+
+                <button className="btn btn-primary" type="button" onClick={handleSubmit}> Guardar </button>
+                <button className="btn btn-success ml-1" type="button" onClick={handleClick}> Volver </button>
             </form >
         </div>
 

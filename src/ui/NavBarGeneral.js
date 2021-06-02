@@ -1,51 +1,19 @@
 import React from 'react'
-import { Link, NavLink } from 'react-router-dom';
-
-
+import { Nav, Navbar, NavLink } from 'react-bootstrap';
 
 
 const NavBarGeneral = () => {
 
     return (
-        
-        <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-
-            <Link
-                className="navbar-brand"
-                to="/"
-            >
-                Digital Movies
-            </Link>
-
-            <div className="navbar-collapse">
-                <div className="navbar-nav">
-
-                    <NavLink
-                        activeClassName="active"
-                        className="nav-item nav-link"
-                        exact
-                        to="/moviesScreen/Todas"
-                    >
-                        Listado Peliculas
-                    </NavLink>
-
-            
-                    <NavLink
-                        activeClassName="active"
-                        className="nav-item nav-link"
-                        exact
-                        to="/search"
-                    >
-                        Search
-                    </NavLink>
-
-                </div>
-            </div>
-
-        </nav>
+        <Navbar variant="dark" bg="dark" sticky="top">
+            <Navbar.Brand href="/"><h1>Digital Movies</h1></Navbar.Brand>
+            <Nav >
+                <NavLink href="/moviesScreen/Todas"><h4> Peliculas </h4></NavLink>
+                <NavLink href="/Agregar"><h4> Agregar </h4></NavLink>
+                <NavLink href="/search"><h4> Search </h4></NavLink>
+            </Nav>
+        </Navbar>
     )
-      
-
 }
 
 export default NavBarGeneral;

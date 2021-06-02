@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router';
-import { getMovies } from '../helpers/getMovies';
+import getMovies from '../helpers/getMovies';
 
 import Button from 'react-bootstrap/Button';
 import BorrarScreen from './BorrarScreen';
 import Table from 'react-bootstrap/Table';
+import { Spinner } from 'react-bootstrap';
 
 const DetalleScreen = () => {
 
@@ -17,15 +18,16 @@ const DetalleScreen = () => {
     useEffect(() => {
         getMovies(`movies/detail/${id}`)
             .then(res => setdetalle(res[0]))
-    }, [])
+            // eslint-disable-next-line
+        }, [])
 
 
-    const volver = () => { history.push("/moviesScreen/Todas") }
+    const volver = () => { history.push(`/moviesScreen/Todas`) }
     const borrar = () => { setmostrarBorrar(true) }
     const editar = () => { history.push(`/movies/edit/${id}`) }
 
     if (detalle === null) {
-        return (<div></div>)
+        return (<Spinner animation="grow" />)
     }
 
     return (
@@ -51,7 +53,7 @@ const DetalleScreen = () => {
                     </tr>
                     <tr>
                         <td>Fecha de estreno</td>
-                        <td>{detalle.release_date}</td>
+                        <td>{detalle.release_date === null ? null : detalle.release_date.slice(0, 10)}</td>
                     </tr>
                     <tr>
                         <td>Duracion</td>
@@ -73,7 +75,7 @@ const DetalleScreen = () => {
             <Button className="float-left ml-1" variant="primary" onClick={editar}>
                 Editar
             </Button>
-            <BorrarScreen mostrar={mostrarBorrar} externalmostrarsetter={setmostrarBorrar} detalle={detalle}></BorrarScreen>
+            <BorrarScreen mostrar={mostrarBorrar} externalmostrarsetter={setmostrarBorrar} formulario={detalle}></BorrarScreen>
         </div>
     )
 }

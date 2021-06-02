@@ -1,17 +1,13 @@
 import React from 'react'
+import { Jumbotron } from 'react-bootstrap';
 
 
 const HomeScreen = () => {
   return (
-
-    <div className="row mt-5">
-      <div className="col-4">
-        <legend className="fw-bold">Digital Movies</legend>
-        <p>Bienvenidos a Digital Movies</p>
-     
-      </div>
-    </div>
-
+    <Jumbotron  classname="jumbotron bg-success text-white">
+      <h1>Digital Movies</h1>
+      <p>Bienvenidos a Digital Movies</p>
+    </Jumbotron>
   )
 }
 export default HomeScreen;

@@ -1,13 +1,14 @@
+const getMovies = async (action) => {
 
-export const getMovies = async (action) => {
-
+    // router.get('/movies/add', moviesController.add);
+    // router.get('/movies/edit/:id', moviesController.edit);
+    // router.get('/movies/delete/:id', moviesController.delete);
 
     const url = `http://localhost:3001/${action}`;
 
     const resp = await fetch(url);
     const data = await resp.json()
-    console.log(url)
-    console.log(data)
+    
 
     const movies = data.map(movie => {
 
@@ -27,3 +28,6 @@ export const getMovies = async (action) => {
 
     return movies;
 }
+
+export default getMovies;
+

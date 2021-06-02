@@ -1,18 +1,24 @@
 import React, { useEffect, useState } from 'react'
-import useForm from '../customHooks/useForm';
+import { Spinner } from 'react-bootstrap';
+import getGeneros from '../helpers/getGeneros';
 
-const Formulario = ({ history }) => {
+const Formulario = ({ valorInicial, setFormulario }) => {
 
     const [generos, setGeneros] = useState([])
+    const [formValues, setFormValues] = useState(valorInicial)
 
     useEffect(() => {
-        cargaGenero()
-            .then((elementos) => setGeneros(elementos))
+        getGeneros().then((elementos) => setGeneros(elementos))
     }, []);
 
-    const [formValues, handleInputChange, reset] = useForm({
+    useEffect(() => {
+        setFormulario(formValues)
+        // eslint-disable-next-line
+    }, [formValues]);
 
-    });
+    const handleInputChange = ({ target }) => {
+        setFormValues({ ...formValues, [target.name]: (target.type === "number") ? target.valueAsNumber : target.value });
+    }
 
     const {
         title,
@@ -20,29 +26,14 @@ const Formulario = ({ history }) => {
         awards,
         release_date,
         length,
-        genre_id } = formValues;
-
-
-    const cargaGenero = async () => {
-        const url = `http://localhost:3001/movies/add`;
-        const resp = await fetch(url);
-        const data = await resp.json()
-        return data;
-    }
-
-    const handleClick = async (e) => {
-        history.push("/")
-    }
+        genre_id } = formValues!=undefined?formValues: { title: '', rating: '', awards: '', release_date: '', length: '', genre_id: '' };
 
     if (generos === null) {
-        return (
-            <h1>Loading....</h1>
-        )
+        return (<Spinner animation="grow" />)
     }
 
     return (
         <div>
-
             <label>Title</label>
             <input
                 className="form-control form-control-sm"
@@ -76,7 +67,7 @@ const Formulario = ({ history }) => {
                 type="date"
                 name="release_date"
                 autoComplete="off"
-                value={release_date}
+                value={(release_date === null|release_date === undefined) ? null : release_date.slice(0, 10)}
                 onChange={handleInputChange} />
             <label>Length</label>
             <input

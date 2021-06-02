@@ -1,37 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useHistory, useParams } from 'react-router';
-import { getMovies } from '../helpers/getMovies';
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button';
+import { Spinner } from 'react-bootstrap';
+import postMovies from '../helpers/postMovies';
 
-const BorrarScreen = ({ externalmostrarsetter, mostrar, detalle }) => {
+const BorrarScreen = ({ externalmostrarsetter, mostrar, formulario }) => {
 
     const { id } = useParams()
     const handleClose = () => externalmostrarsetter(false);
     let history = useHistory()
 
-    const borrar = async () => {
-        const response = await fetch(`http://localhost:3001/movies/update/${id}`, {
-            method: "POST",
-            body: new URLSearchParams({
-                'title': detalle.title + " BORRADO",
-                'rating': detalle.rating,
-                'awards': detalle.awards,
-                'release_date': detalle.release_date,
-                'length': detalle.length,
-                'genre_id': detalle.genre_id
-            })
-        })
-
-        if (!response.ok) {
-            console.log('Error al modificar la pelicula')
-        } else {
-            history.push("/moviesScreen/Todas");
-        }
+    const handleSubmit = async () => {
+        postMovies(`update/${id}`, JSON.stringify({ ...formulario, "title":"BORRADO"+formulario.title}))
+        history.push("/moviesScreen/")
     }
 
-    if (detalle === null) {
-        return (<div></div>)
+    if (formulario === null) {
+        return (<Spinner animation="grow" />)
     }
 
     return (
@@ -40,12 +26,12 @@ const BorrarScreen = ({ externalmostrarsetter, mostrar, detalle }) => {
                 <Modal.Header closeButton>
                     <Modal.Title>Borrado Logico</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Estas seguro de querer borrar esta película? <br /> <b>{`${detalle.title}`}</b></Modal.Body>
+                <Modal.Body>Estas seguro de querer borrar esta película? <br /> <b>{`${formulario.title}`}</b></Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                 </Button>
-                    <Button variant="danger" onClick={borrar}>
+                    <Button variant="danger" onClick={handleSubmit}>
                         Borrar
                 </Button>
                 </Modal.Footer>

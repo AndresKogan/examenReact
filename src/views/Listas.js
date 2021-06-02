@@ -1,112 +1,54 @@
 import React, { useMemo, useState } from 'react'
-import { useHistory, useParams } from 'react-router'
-import { getMovies } from '../helpers/getMovies';
+import { ListGroup, Spinner } from 'react-bootstrap';
+import getMovies from '../helpers/getMovies';
 
-export const Listas = () => {
-
-
- const history = useHistory()
-    const { lista } = useParams();
-    
+const Listas = ({ filtro, generos }) => {
 
     const [movies, setMovies] = useState(null)
 
     useMemo(() => {
-        switch (lista) {
-            case "Todas":
-                getMovies("movies")
-                .then(peliculas => {
-               
-                    setMovies(peliculas)
-                })
-                break;
-                case "Genero":
-                  
-                getMovies("genres/detail/")
-                .then(peliculas => {
-           
-                    setMovies(peliculas)
-                })
-                break;
-                case "Nuevas":
+        switch (filtro.porCategoria) {
+
+            case "Nuevas":
                 getMovies("movies/new")
-                .then(peliculas => {
-                 
-                    setMovies(peliculas)
-                })
+                    .then(peliculas => { setMovies(peliculas) })
                 break;
-                case "Recomendadas":
+            case "Recomendadas":
                 getMovies("movies/recommended")
-                .then(peliculas => {
-        
-                    setMovies(peliculas)
-                })
+                    .then(peliculas => { setMovies(peliculas) })
                 break;
             default:
-                getMovies(`genres/detail/${lista}`)
-                .then(peliculas => {
-           
-                    setMovies(peliculas)
-                })
+            case "Todas":
+                getMovies("movies")
+                    .then(peliculas => { setMovies(peliculas) })
                 break;
         }
-        
-    }, [lista])
+
+    }, [filtro])
 
 
-    const handleClick = ({ target }) => {
-        history.push(target.id)
-    }
-
-
-    if (movies === null) {
-        return <>
-            <h1>Loading...</h1>
-        </>
+    if (movies === null | generos === undefined) {
+        return (<Spinner animation="grow" />)
     }
     
+    console.log(movies)
+    // const filtro_genero_id = generos.filter(genero => genero.name === filtro.porGenero)[0].id
+    const filtro_genero = generos.find(genero=>genero.name === filtro.porGenero) 
+    console.log(filtro_genero)
+    const movies_filtradas = filtro_genero != null ? movies.filter(movie => movie.genre_id === filtro_genero.id) : movies
 
     return (
-        <div>
-            <div className="row">
-                <div className="col">
-
-                    <legend className="fw-bold">Listado de {lista}</legend>
-
-
-
-
-                    <ul >    {movies.map(movie =>
-
-                        <li key={movie.id} style={{ fontSize: '12px' }}>
-                            <a
-                                href={`/movies/detail/${movie.id}`}>
-                                {movie.title}
-
-                            </a>
-                        </li>)}
-
-
-                    </ul>
-                </div>
-                <div className="col">
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <div className="container">
-
-                        <button className="btn btn-primary" id="/Agregar" onClick={handleClick} >Agregar una Peliculas</button>
-                        <br />
-                        <br />
-                        <button className="btn btn-success" id="/" onClick={handleClick}>Inicio</button>
-                    </div>
-
-                </div>
-            </div>
-
-
-
+        <div >
+            <hr />
+            <ListGroup>
+                {movies_filtradas.map(movie =>
+                    <ListGroup.Item key={movie.id} action href={`/movies/detail/${movie.id}`}>
+                        {movie.title}
+                    </ListGroup.Item>
+                )}
+            </ListGroup>
         </div>
     )
 }
+
+export default Listas;
