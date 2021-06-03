@@ -39,8 +39,7 @@ const Listas = ({generos}) => {
         return (<Spinner animation="grow" />)
     }
     
-    
-    
+       
     const porGenero = generos.find(genero=>genero.name === filtro.porGenero) 
     let movies_filtradas = (porGenero != null) ? movies.filter(movie => movie.genre_id === porGenero.id) : movies
     movies_filtradas=(filtro.porPalabraclave != null)? movies_filtradas.filter(movie => movie.title.toLocaleLowerCase().includes(filtro.porPalabraclave)):movies_filtradas

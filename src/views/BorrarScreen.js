@@ -12,7 +12,10 @@ const BorrarScreen = ({ externalmostrarsetter, mostrar, formulario }) => {
     let history = useHistory()
 
     const handleSubmit = async () => {
-        postMovies(`update/${id}`, JSON.stringify({ ...formulario, "title":"BORRADO"+formulario.title}))
+        const nuevoTitulo = formulario.title.slice(0,8)==="BORRADO " ?formulario.title: ("BORRADO " + formulario.title)
+        console.log( nuevoTitulo)
+        postMovies(`update/${id}`, JSON.stringify({ ...formulario, "title":nuevoTitulo}))
+        .then((e)=>console.log(e))
         history.push("/moviesScreen/")
     }
 
