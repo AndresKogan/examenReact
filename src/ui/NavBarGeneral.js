@@ -21,7 +21,7 @@ const NavBarGeneral = () => {
                 <NavLink href="/moviesScreen"><h5> Peliculas </h5></NavLink>
                 <NavLink href="/Agregar"><h5> Agregar </h5></NavLink>
             </Nav>
-            <div className={history.location.pathname==="/"?"invisible":"visible" } >
+            <div className={history.location.pathname==="/moviesScreen"?"visible":"invisible" } >
                 <Form inline className="ml-auto" onSubmit={e =>{e.preventDefault();e.target[0].value=""}}>
                     <FormControl type="text" placeholder="Search" className="mr-sm-2 "
                         onChange={(e) => setquery({ porPalabraclave: e.currentTarget.value })} 

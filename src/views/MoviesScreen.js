@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Spinner, ToggleButton, ButtonGroup, Dropdown, Button } from 'react-bootstrap';
-import { useHistory, useLocation } from 'react-router';
+import { useHistory} from 'react-router';
 import getGeneros from '../helpers/getGeneros';
 import queryString from 'query-string';
 
@@ -10,15 +10,10 @@ const MoviesScreen = () => {
 
     const [generos, setGeneros] = useState(null)
     const [query, setquery] = useState({})
-    // const location = useLocation();
     let history = useHistory()
 
     const categorias = ["Todas", "Nuevas", "Recomendadas"];
     
-    // useEffect(() => {
-    //     setquery(queryString.parse(location.search))
-    // }, [location]);
-
     useEffect(() => {
         getGeneros().then((elementos) => setGeneros(elementos))
     }, []);

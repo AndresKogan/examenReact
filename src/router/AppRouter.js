@@ -17,7 +17,6 @@ export const AppRouter = () => {
             <div className="ml-5 mr-5 mt-5">
                 <Switch>
                     <Route exact path="/moviesScreen/" component={MoviesScreen} />
-                    <Route exact path="/moviesScreen/Genero/:id" component={MoviesScreen} />
                     <Route exact path="/" component={HomeScreen} />
                     <Route exact path="/agregar" component={AgregarScreen} />
                     <Route exact path="/movies/detail/:id" component={DetalleScreen} />
