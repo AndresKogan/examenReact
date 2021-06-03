@@ -25,7 +25,7 @@ const getMovies = async (action) => {
         }
 
     })
-
+    // console.log(movies)
     return movies;
 }
 

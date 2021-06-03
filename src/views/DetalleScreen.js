@@ -21,45 +21,41 @@ const DetalleScreen = () => {
         getMovies(`movies/detail/${id}`)
             .then(res => setdetalle(res[0]))
 
-         
-     // eslint-disable-next-line
+
+        // eslint-disable-next-line
     }, [])
 
     useEffect(() => {
-       console.log("para")
-       console.log(detalle)
-       
-        if(detalle){
-         getGeneros()
-     .then((elementos => elementos.find(genero => genero.id === detalle.genre_id)),
-    )
-     .then((genero => setGeneroPelicula(genero)))
+        console.log("para")
+        console.log(detalle)
+
+        if (detalle) {
+            getGeneros()
+                .then((elementos => elementos.find(genero => genero.id === detalle.genre_id)))
+                .then((genero => setGeneroPelicula(genero)))
         }
-        
-      
+
     }, [detalle])
 
-    
-  
+    const volver = () => {
+        history.go(-2)
+    }
 
+    const borrar = () => {
+        setmostrarBorrar(true)
+    }
 
+    const editar = () => {
+        history.push(`/movies/edit/${id}`)
+    }
 
-    const volver = () => { history.go(-2) }
-    const borrar = () => { setmostrarBorrar(true) }
-    const editar = () => { history.push(`/movies/edit/${id}`) }
-
-    if (detalle === null|| generoPelicula===null) {
+    if (detalle === null || generoPelicula === null) {
         return (<Spinner animation="grow" />)
     }
-  
 
-    // console.log(generoPelicula)
-    
-    
 
     return (
         <div>
-
             <Table responsive striped bordered hover size="sm" >
                 <tbody>
                     <tr>

@@ -16,7 +16,7 @@ const getGeneros = async () => {
         }
 
     })
-
+    // console.log(generos)
     return (generos)
 }
 

@@ -1,13 +1,14 @@
 import React from 'react'
 import { Jumbotron } from 'react-bootstrap';
-
+import portada from "../images/jumbotron.png"
 
 const HomeScreen = () => {
   return (
-    <Jumbotron  className="jumbotron bg-success text-white">
-      <h1>Digital Movies</h1>
-      <p>Bienvenidos a Digital Movies</p>
-    </Jumbotron>
+
+      <Jumbotron className="jumbotron bg-success text-white">
+        <h5>Bienvenidos a Digital Movies</h5>
+      </Jumbotron>
+
   )
 }
 export default HomeScreen;

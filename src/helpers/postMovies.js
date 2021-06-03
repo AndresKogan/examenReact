@@ -11,7 +11,7 @@ const postMovies = async (action, reqJson) => {
         headers: { 'Content-Type': 'application/json' }
     });
     const data = await resp.json()
-
+    // console.log(data)
     return (data)
 }
 
