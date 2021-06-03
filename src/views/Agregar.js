@@ -4,7 +4,7 @@ import { useHistory } from 'react-router';
 import postMovies from '../helpers/postMovies';
 import Formulario from './Formulario';
 
-const AgregarScreen = () => {
+const Agregar = () => {
 
     //--------------Hooks----------------------
     const [formulario, setFormulario] = useState(null)
@@ -18,9 +18,8 @@ const AgregarScreen = () => {
     }
 
     const handleSubmit = async () => {
-      
         postMovies(`create/`, JSON.stringify(formulario))
-        history.push("/moviesScreen/")
+        handleClick()
     }
 
     //--------------Returns----------------------
@@ -39,4 +38,4 @@ const AgregarScreen = () => {
 
     )
 }
-export default AgregarScreen;
+export default Agregar;

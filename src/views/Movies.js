@@ -6,7 +6,7 @@ import queryString from 'query-string';
 
 import Listas from './Listas';
 
-const MoviesScreen = () => {
+const Movies = () => {
 
     const [generos, setGeneros] = useState(null)
     const [query, setquery] = useState({})
@@ -70,5 +70,5 @@ const MoviesScreen = () => {
 
 
 }
-export default MoviesScreen;
+export default Movies;
 

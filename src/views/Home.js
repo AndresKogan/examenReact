@@ -2,7 +2,7 @@ import React from 'react'
 import { Jumbotron } from 'react-bootstrap';
 
 
-const HomeScreen = () => {
+const Home = () => {
   return (
 
       <Jumbotron className="jumbotron bg-success text-white">
@@ -11,4 +11,4 @@ const HomeScreen = () => {
 
   )
 }
-export default HomeScreen;
+export default Home;

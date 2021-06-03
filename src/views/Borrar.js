@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import { Spinner } from 'react-bootstrap';
 import postMovies from '../helpers/postMovies';
 
-const BorrarScreen = ({ externalmostrarsetter, mostrar, formulario }) => {
+const Borrar = ({ externalmostrarsetter, mostrar, formulario }) => {
 
     const { id } = useParams()
     const handleClose = () => externalmostrarsetter(false);
@@ -15,7 +15,7 @@ const BorrarScreen = ({ externalmostrarsetter, mostrar, formulario }) => {
         const nuevoTitulo = formulario.title.slice(0,8)==="BORRADO " ?formulario.title: ("BORRADO " + formulario.title)
         postMovies(`update/${id}`, JSON.stringify({ ...formulario, "title":nuevoTitulo}))
         
-        history.push("/moviesScreen/")
+        history.push("/movies/")
     }
 
     if (formulario === null) {
@@ -42,4 +42,4 @@ const BorrarScreen = ({ externalmostrarsetter, mostrar, formulario }) => {
     );
 
 }
-export default BorrarScreen;
+export default Borrar;

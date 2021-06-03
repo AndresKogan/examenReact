@@ -5,7 +5,7 @@ import getMovies from '../helpers/getMovies';
 import postMovies from '../helpers/postMovies';
 import Formulario from './Formulario';
 
-const EditarScreen = () => {
+const Editar = () => {
 
     //--------------Hooks----------------------
 
@@ -28,7 +28,7 @@ const EditarScreen = () => {
 
     const handleSubmit = async () => {
         postMovies(`update/${id}`, JSON.stringify(formulario))
-        history.push("/moviesScreen/")
+        handleClick()
     }
 
     //--------------Returns----------------------
@@ -40,7 +40,9 @@ const EditarScreen = () => {
         <div>
             <legend className="fw-bold">Editar Pelicula</legend>
             <form>
+               
                 <Formulario valorInicial={formulario} setFormulario={setFormulario} />
+               
                 <button className="btn btn-primary" type="button" onClick={handleSubmit}> Guardar </button>
                 <button className="btn btn-success ml-1" type="button" onClick={handleClick}> Volver </button>
             </form >
@@ -48,4 +50,4 @@ const EditarScreen = () => {
 
     )
 }
-export default EditarScreen;
+export default Editar;

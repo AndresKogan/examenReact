@@ -3,12 +3,12 @@ import { useHistory, useParams } from 'react-router';
 import getMovies from '../helpers/getMovies';
 
 import Button from 'react-bootstrap/Button';
-import BorrarScreen from './BorrarScreen';
+import Borrar from './Borrar';
 import Table from 'react-bootstrap/Table';
 import { Spinner } from 'react-bootstrap';
 import getGeneros from '../helpers/getGeneros';
 
-const DetalleScreen = () => {
+const Detalle = () => {
 
     const { id } = useParams();
     const [detalle, setdetalle] = useState(null)
@@ -98,8 +98,8 @@ const DetalleScreen = () => {
             <Button className="float-left ml-1" variant="primary" onClick={editar}>
                 Editar
             </Button>
-            <BorrarScreen mostrar={mostrarBorrar} externalmostrarsetter={setmostrarBorrar} formulario={detalle}></BorrarScreen>
+            <Borrar mostrar={mostrarBorrar} externalmostrarsetter={setmostrarBorrar} formulario={detalle}></Borrar>
         </div>
     )
 }
-export default DetalleScreen;
+export default Detalle;
