@@ -1,21 +1,20 @@
 import React, {  useState } from 'react'
 
-import { useHistory, useParams } from 'react-router';
+import { useHistory } from 'react-router';
 import postMovies from '../helpers/postMovies';
 import Formulario from './Formulario';
 
 const AgregarScreen = () => {
 
     //--------------Hooks----------------------
-
     const [formulario, setFormulario] = useState(null)
-    const { id } = useParams();
     let history = useHistory()
 
     //--------------Logica----------------------
 
     const handleClick = () => {
-        history.push(`/movies/detail/${id}`)
+        // history.goBack()
+        history.go(-2) 
     }
 
     const handleSubmit = async () => {

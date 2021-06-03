@@ -1,14 +1,23 @@
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { ListGroup, Spinner } from 'react-bootstrap';
 import getMovies from '../helpers/getMovies';
+import queryString from 'query-string';
+import { useLocation } from 'react-router';
 
-const Listas = ({ filtro, generos }) => {
-
+const Listas = ({generos}) => {
+    
     const [movies, setMovies] = useState(null)
+    const [filtro, setFiltro] = useState({})
+    const location = useLocation();
 
+
+    useEffect(() => {
+        setFiltro(queryString.parse(location.search))
+    }, [location]);
+
+    
     useMemo(() => {
         switch (filtro.porCategoria) {
-
             case "Nuevas":
                 getMovies("movies/new")
                     .then(peliculas => { setMovies(peliculas) })
@@ -23,7 +32,6 @@ const Listas = ({ filtro, generos }) => {
                     .then(peliculas => { setMovies(peliculas) })
                 break;
         }
-
     }, [filtro])
 
 
@@ -31,11 +39,12 @@ const Listas = ({ filtro, generos }) => {
         return (<Spinner animation="grow" />)
     }
     
-    console.log(movies)
-    // const filtro_genero_id = generos.filter(genero => genero.name === filtro.porGenero)[0].id
-    const filtro_genero = generos.find(genero=>genero.name === filtro.porGenero) 
-    console.log(filtro_genero)
-    const movies_filtradas = filtro_genero != null ? movies.filter(movie => movie.genre_id === filtro_genero.id) : movies
+    
+    
+    const porGenero = generos.find(genero=>genero.name === filtro.porGenero) 
+    let movies_filtradas = (porGenero != null) ? movies.filter(movie => movie.genre_id === porGenero.id) : movies
+    movies_filtradas=(filtro.porPalabraclave != null)? movies_filtradas.filter(movie => movie.title.toLocaleLowerCase().includes(filtro.porPalabraclave)):movies_filtradas
+   
 
     return (
         <div >

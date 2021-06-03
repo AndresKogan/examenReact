@@ -22,7 +22,8 @@ const EditarScreen = () => {
     //--------------Logica----------------------
 
     const handleClick = () => {
-        history.push(`/movies/detail/${id}`)
+        // history.goBack()
+        history.go(-2)
     }
 
     const handleSubmit = async () => {

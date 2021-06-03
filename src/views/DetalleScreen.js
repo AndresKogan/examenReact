@@ -18,11 +18,10 @@ const DetalleScreen = () => {
     useEffect(() => {
         getMovies(`movies/detail/${id}`)
             .then(res => setdetalle(res[0]))
-            // eslint-disable-next-line
-        }, [])
+        // eslint-disable-next-line
+    }, [])
 
-
-    const volver = () => { history.push(`/moviesScreen/Todas`) }
+    const volver = () => { history.go(-2) }
     const borrar = () => { setmostrarBorrar(true) }
     const editar = () => { history.push(`/movies/edit/${id}`) }
 
