@@ -1,5 +1,9 @@
 const getGeneros = async () => {
 
+    // router.get('/genres', genresController.list);
+    // router.get('/genres/detail/:id', genresController.detail);
+
+
     const url = `http://localhost:3001/movies/add`;
     const resp = await fetch(url);
     const data = await resp.json()
