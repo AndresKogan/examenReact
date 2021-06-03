@@ -16,6 +16,8 @@ const Formulario = ({ valorInicial, setFormulario }) => {
         // eslint-disable-next-line
     }, [formValues]);
 
+
+
     const handleInputChange = ({ target }) => {
         setFormValues({ ...formValues, [target.name]: (target.type === "number") ? target.valueAsNumber : target.value });
     }
@@ -26,8 +28,10 @@ const Formulario = ({ valorInicial, setFormulario }) => {
         awards,
         release_date,
         length,
-        genre_id } = formValues!==undefined?formValues: { title: '', rating: '', awards: '', release_date: '', length: '', genre_id: '' };
+        genre_id } = formValues !== undefined ? formValues : { title: '', rating: '', awards: '', release_date: '', length: '', genre_id: '' };
 
+
+        
     if (generos === null) {
         return (<Spinner animation="grow" />)
     }
@@ -67,7 +71,7 @@ const Formulario = ({ valorInicial, setFormulario }) => {
                 type="date"
                 name="release_date"
                 autoComplete="off"
-                value={(release_date === null|release_date === undefined) ? null : release_date.slice(0, 10)}
+                value={(release_date === null | release_date === undefined) ? null : release_date.slice(0, 10)}
                 onChange={handleInputChange} />
             <label>Length</label>
             <input

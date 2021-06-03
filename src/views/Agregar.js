@@ -1,5 +1,5 @@
-import React, {  useState } from 'react'
-
+import React, { useState } from 'react'
+import { Button } from 'react-bootstrap';
 import { useHistory } from 'react-router';
 import postMovies from '../helpers/postMovies';
 import Formulario from './Formulario';
@@ -14,7 +14,7 @@ const Agregar = () => {
 
     const handleClick = () => {
         // history.goBack()
-        history.go(-2) 
+        history.go(-2)
     }
 
     const handleSubmit = async () => {
@@ -31,8 +31,8 @@ const Agregar = () => {
 
                 <Formulario formulario={formulario} setFormulario={setFormulario} />
 
-                <button className="btn btn-primary" type="button" onClick={handleSubmit}> Guardar </button>
-                <button className="btn btn-success ml-1" type="button" onClick={handleClick}> Volver </button>
+                <Button className="ml-1" variant="secondary" type="button" onClick={handleClick}>Volver</Button>
+                <Button className="ml-1" variant="primary" type="button" onClick={handleSubmit}>Guardar</Button>
             </form >
         </div>
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Switch, Route } from "react-router-dom";
 import NavBarGeneral from '../ui/NavBarGeneral';
+import { BrowserRouter } from 'react-router-dom';
 
 import Agregar from '../views/Agregar';
 import Borrar from '../views/Borrar';
@@ -13,6 +14,7 @@ export const AppRouter = () => {
 
     return (
         <div>
+            <BrowserRouter>
             <NavBarGeneral />
             <div className="ml-5 mr-5 mt-5">
                 <Switch>
@@ -24,6 +26,7 @@ export const AppRouter = () => {
                     <Route exact path="/movies/edit/:id" component={Editar} />
                 </Switch>
             </div>
+            </BrowserRouter>
         </div>
     )
 }

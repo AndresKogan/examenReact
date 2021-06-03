@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Form, FormControl, Nav, Navbar, NavLink } from 'react-bootstrap';
-import { useHistory,useLocation } from 'react-router';
+import { useHistory } from 'react-router';
 import queryString from 'query-string';
 
 
@@ -8,7 +8,6 @@ const NavBarGeneral = () => {
 
     const [query, setquery] = useState({})
     const [mostrarBusqueda, setmostrarBusqueda] = useState({})
-    const location = useLocation();
     let history = useHistory()
 
     useEffect(() => {

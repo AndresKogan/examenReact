@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router';
 import getMovies from '../helpers/getMovies';
-
 import Button from 'react-bootstrap/Button';
 import Borrar from './Borrar';
 import Table from 'react-bootstrap/Table';
@@ -14,14 +13,11 @@ const Detalle = () => {
     const [detalle, setdetalle] = useState(null)
     const [mostrarBorrar, setmostrarBorrar] = useState(false)
     const [generoPelicula, setGeneroPelicula] = useState(null)
-
     let history = useHistory()
 
     useEffect(() => {
         getMovies(`movies/detail/${id}`)
             .then(res => setdetalle(res[0]))
-
-
         // eslint-disable-next-line
     }, [])
 
@@ -37,17 +33,21 @@ const Detalle = () => {
 
     }, [detalle])
 
-    const volver = () => {
+
+
+    function volver() {
         history.go(-2)
     }
 
-    const borrar = () => {
+    function borrar() {
         setmostrarBorrar(true)
     }
 
-    const editar = () => {
+    function editar() {
         history.push(`/movies/edit/${id}`)
     }
+
+
 
     if (detalle === null || generoPelicula === null) {
         return (<Spinner animation="grow" />)

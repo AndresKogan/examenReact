@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Spinner } from 'react-bootstrap';
+import { Button, Spinner } from 'react-bootstrap';
 import { useHistory, useParams } from 'react-router';
 import getMovies from '../helpers/getMovies';
 import postMovies from '../helpers/postMovies';
@@ -36,15 +36,16 @@ const Editar = () => {
     if (formulario === null) {
         return (<Spinner animation="grow" />)
     }
+    
     return (
         <div>
             <legend className="fw-bold">Editar Pelicula</legend>
             <form>
-               
+
                 <Formulario valorInicial={formulario} setFormulario={setFormulario} />
-               
-                <button className="btn btn-primary" type="button" onClick={handleSubmit}> Guardar </button>
-                <button className="btn btn-success ml-1" type="button" onClick={handleClick}> Volver </button>
+
+                <Button className="ml-1" variant="secondary" type="button" onClick={handleClick}>Volver</Button>
+                <Button className="ml-1" variant="primary" type="button" onClick={handleSubmit}>Guardar</Button>
             </form >
         </div>
 

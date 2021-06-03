@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Spinner, ToggleButton, ButtonGroup, Dropdown, Button } from 'react-bootstrap';
-import { useHistory} from 'react-router';
+import { useHistory } from 'react-router';
 import getGeneros from '../helpers/getGeneros';
 import queryString from 'query-string';
 
@@ -13,7 +13,7 @@ const Movies = () => {
     let history = useHistory()
 
     const categorias = ["Todas", "Nuevas", "Recomendadas"];
-    
+
     useEffect(() => {
         getGeneros().then((elementos) => setGeneros(elementos))
     }, []);
@@ -59,12 +59,12 @@ const Movies = () => {
                     <Dropdown.Item key="0"
                         name="Todos los generos"
                         onClick={(e) => setquery({ ...query, porGenero: e.currentTarget.name })}>
-                        Generos
+                        Todos los generos
                     </Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
 
-            <Listas generos={generos}/>
+            <Listas generos={generos} />
         </div >
     )
 

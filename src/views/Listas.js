@@ -4,8 +4,8 @@ import getMovies from '../helpers/getMovies';
 import queryString from 'query-string';
 import { useLocation } from 'react-router';
 
-const Listas = ({generos}) => {
-    
+const Listas = ({ generos }) => {
+
     const [movies, setMovies] = useState(null)
     const [filtro, setFiltro] = useState({})
     const location = useLocation();
@@ -15,7 +15,7 @@ const Listas = ({generos}) => {
         setFiltro(queryString.parse(location.search))
     }, [location]);
 
-    
+
     useMemo(() => {
         switch (filtro.porCategoria) {
             case "Nuevas":
@@ -38,12 +38,12 @@ const Listas = ({generos}) => {
     if (movies === null | generos === undefined) {
         return (<Spinner animation="grow" />)
     }
-    
-       
-    const porGenero = generos.find(genero=>genero.name === filtro.porGenero) 
+
+
+    const porGenero = generos.find(genero => genero.name === filtro.porGenero)
     let movies_filtradas = (porGenero != null) ? movies.filter(movie => movie.genre_id === porGenero.id) : movies
-    movies_filtradas=(filtro.porPalabraclave != null)? movies_filtradas.filter(movie => movie.title.toLocaleLowerCase().includes(filtro.porPalabraclave)):movies_filtradas
-   
+    movies_filtradas = (filtro.porPalabraclave != null) ? movies_filtradas.filter(movie => movie.title.toLocaleLowerCase().includes(filtro.porPalabraclave)) : movies_filtradas
+
 
     return (
         <div >

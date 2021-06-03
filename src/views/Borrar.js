@@ -12,9 +12,8 @@ const Borrar = ({ externalmostrarsetter, mostrar, formulario }) => {
     let history = useHistory()
 
     const handleSubmit = async () => {
-        const nuevoTitulo = formulario.title.slice(0,8)==="BORRADO " ?formulario.title: ("BORRADO " + formulario.title)
-        postMovies(`update/${id}`, JSON.stringify({ ...formulario, "title":nuevoTitulo}))
-        
+        const nuevoTitulo = formulario.title.slice(0, 8) === "BORRADO " ? formulario.title : ("BORRADO " + formulario.title)
+        postMovies(`update/${id}`, JSON.stringify({ ...formulario, "title": nuevoTitulo }))
         history.push("/movies/")
     }
 
