@@ -6,28 +6,56 @@ import Button from 'react-bootstrap/Button';
 import BorrarScreen from './BorrarScreen';
 import Table from 'react-bootstrap/Table';
 import { Spinner } from 'react-bootstrap';
+import getGeneros from '../helpers/getGeneros';
 
 const DetalleScreen = () => {
 
     const { id } = useParams();
     const [detalle, setdetalle] = useState(null)
     const [mostrarBorrar, setmostrarBorrar] = useState(false)
+    const [generoPelicula, setGeneroPelicula] = useState(null)
 
     let history = useHistory()
 
     useEffect(() => {
         getMovies(`movies/detail/${id}`)
             .then(res => setdetalle(res[0]))
-        // eslint-disable-next-line
+
+         
+     // eslint-disable-next-line
     }, [])
+
+    useEffect(() => {
+       console.log("para")
+       console.log(detalle)
+       
+        if(detalle){
+         getGeneros()
+     .then((elementos => elementos.find(genero => genero.id === detalle.genre_id)),
+    )
+     .then((genero => setGeneroPelicula(genero)))
+        }
+        
+      
+    }, [detalle])
+
+    
+  
+
+
 
     const volver = () => { history.go(-2) }
     const borrar = () => { setmostrarBorrar(true) }
     const editar = () => { history.push(`/movies/edit/${id}`) }
 
-    if (detalle === null) {
+    if (detalle === null|| generoPelicula===null) {
         return (<Spinner animation="grow" />)
     }
+  
+
+    // console.log(generoPelicula)
+    
+    
 
     return (
         <div>
@@ -60,7 +88,7 @@ const DetalleScreen = () => {
                     </tr>
                     <tr>
                         <td>Genero</td>
-                        <td>{detalle.genre_id}</td>
+                        <td>{generoPelicula.name}</td>
                     </tr>
                 </tbody>
             </Table>
